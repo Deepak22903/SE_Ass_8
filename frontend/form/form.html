@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reg.css">
     <title>Student Registration</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
     <div class="container">
         <h2>Student Registration</h2>
-        <form action="#" method="POST">
+        <form id="registrationForm" onsubmit="return handleFormSubmit(event)">
             <div class="input-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -52,6 +53,45 @@
             </div>
             <button type="submit">Register</button>
         </form>
+        <button id="downloadButton" style="display:none;" onclick="downloadExcel()">Download Data as Excel</button>
     </div>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                course: document.getElementById('course').value,
+                gender: document.querySelector('input[name="gender"]:checked').value
+            };
+
+            // Store data in the button's dataset
+            const downloadButton = document.getElementById('downloadButton');
+            downloadButton.dataset.formData = JSON.stringify(formData);
+
+            // Show the download button
+            downloadButton.style.display = 'block';
+        }
+
+        function downloadExcel() {
+            const downloadButton = document.getElementById('downloadButton');
+            const formData = JSON.parse(downloadButton.dataset.formData);
+
+            // Create a new workbook and worksheet
+            const workbook = XLSX.utils.book_new();
+            const worksheet = XLSX.utils.json_to_sheet([formData]);
+
+            // Append the worksheet to the workbook
+            XLSX.utils.book_append_sheet(workbook, worksheet, 'Student Data');
+
+            // Export the workbook as an Excel file
+            XLSX.writeFile(workbook, 'student_data.xlsx');
+        }
+    </script>
 </body>
 </html>

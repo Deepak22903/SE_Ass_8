@@ -3,13 +3,24 @@ function validateForm() {
     const password = document.getElementById('password').value;
     const message = document.getElementById('message');
 
-    // Simple validation for demonstration
-    if (username === "admin" && password === "password") {
+    // Default usernames and passwords
+    const validCredentials = {
+        "deepak": "deepak123",
+        "disha": "disha123",
+        "shravani": "shravani123"
+    };
+
+    // Check if the username exists and if the password matches
+    if (validCredentials[username] && validCredentials[username] === password) {
         message.textContent = "Login successful!";
         message.style.color = "green";
-        return true; // You can proceed with the login
+
+        // Redirect to form/form.html after successful login
+        window.location.href = "form/form.html";
+        return false; // Prevent default form submission
     } else {
         message.textContent = "Invalid username or password.";
-        return false; // Prevent form submission
+        message.style.color = "red";
+        return false; // Prevent form submission on invalid credentials
     }
 }

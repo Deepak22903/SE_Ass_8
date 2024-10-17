@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light gray background */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.container {
+    width: 400px; /* Set container width */
+    margin: 100px auto; /* Center the container */
+    background-color: white; /* White background for form */
+    padding: 20px; /* Padding inside container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+h2 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Margin below heading */
+}
+
+.input-group {
+    margin-bottom: 15px; /* Margin between input groups */
+}
+
+label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Margin below labels */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in total width */
+}
+
+button {
+    width: 100%; /* Full width for button */
+    padding: 10px; /* Padding inside button */
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Increase font size */
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
